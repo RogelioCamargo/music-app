@@ -1,0 +1,16 @@
+<h1><%= @track.title %></h1>
+<p>Track Number: <%= @track.ord %></p>
+<p>Type: <%= @track.bonus ? "Bonus" : "Regular" %></p>
+<p>Lyrics</p> 
+<div>
+	<% @track.lyrics.split("\n").each do |line| %>
+		<p><%= line %></p>
+	<% end %>
+</div>
+
+<%= link_to "Update Track", edit_track_url(@track) %>
+<form action="<%= track_url(@track) %>" method="post">
+	<%= authenticity_token %>
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete track">
+</form>
