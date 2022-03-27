@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :albums, only: %i(create destroy edit update show)
+  resources :tracks, only: %i(create destroy edit update show)
+  resources :albums, only: %i(create destroy edit update show) do 
+		resources :tracks, only: %i(new)
+	end
+
   resources :bands do 
 		resources :albums, only: %i(new)
 	end
