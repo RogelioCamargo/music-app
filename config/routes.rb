@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-	resource :session, only: [:create, :destroy, :new, :show]
-  resources :users, only: [:create, :new]
+  resources :bands
+	resource :session, only: [:create, :destroy, :new]
+  resources :users, only: [:create, :new, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
