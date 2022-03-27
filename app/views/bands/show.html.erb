@@ -1,5 +1,20 @@
-<%= link_to "All Bands", bands_url %>
-
 <h1><%= @band.name %></h1>
 
-<%= link_to "Update", edit_band_url(@band) %>
+<%= link_to "Update Band", edit_band_url(@band) %>
+<form action="<%= band_url(@band) %>" method="post">
+	<%= authenticity_token %>
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete Band">
+</form>
+
+<h2>Albums</h2>
+<ul>
+	<% if @band.albums.count > 0 %>
+		<% @band.albums.each do |album| %>
+			<li><a href="<%= album_url(album) %>"><%= album.title %></a></li>
+		<% end %>
+	<% else %>
+		<li>No albums</li>
+	<% end %>
+</ul>
+<%= link_to "Create Album", new_band_album_url(@band) %>
