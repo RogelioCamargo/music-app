@@ -11,6 +11,20 @@
   </head>
 
   <body>
+		<nav>
+			<% if current_user.nil? %>
+				<ul>
+					<li><a href="<%= new_session_url %>">Login</a></li>
+					<li><a href="<%= new_user_url %>">Register</a></li>
+				</ul>
+			<% else %>
+				<form action="<%= session_url %>" method="POST">
+					<%= authenticity_token %>
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="submit" value="Logout">
+				</form>
+			<% end %>
+		</nav>
     <%= yield %>
   </body>
 </html>
