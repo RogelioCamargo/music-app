@@ -12,18 +12,20 @@
 
   <body>
 		<nav>
-			<% if current_user.nil? %>
-				<ul>
-					<li><a href="<%= new_session_url %>">Login</a></li>
-					<li><a href="<%= new_user_url %>">Register</a></li>
-					<li><a href="<%= bands_url %>">All Bands</a></li>
-				</ul>
-			<% else %>
+			<% if logged_in? %>
+				<p>Logged in as: <%= current_user.email %></p>
 				<form action="<%= session_url %>" method="POST">
 					<%= authenticity_token %>
 					<input type="hidden" name="_method" value="DELETE">
 					<input type="submit" value="Logout">
 				</form>
+				<p><a href="<%= bands_url %>">All Bands</a></p>
+			<% else %>
+				<ul>
+					<li><a href="<%= new_session_url %>">Login</a></li>
+					<li><a href="<%= new_user_url %>">Register</a></li>
+					<li><a href="<%= bands_url %>">All Bands</a></li>
+				</ul>
 			<% end %>
 		</nav>
     <%= yield %>

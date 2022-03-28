@@ -9,6 +9,9 @@ class Track < ApplicationRecord
 		through: :album,
 		source: :band
 
+	has_many :notes,
+		dependent: :destroy
+
 	private 
 
 	def set_defaults
