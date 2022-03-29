@@ -1,11 +1,4 @@
 <h1>Create Album</h1>
 
-<% if flash.now[:errors] %>
-  <ul>
-  <% flash.now[:errors].each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-<% end %>
-
+<%= render 'layouts/errors' %>
 <%= render 'form', album: @album %>

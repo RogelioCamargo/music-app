@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 		
 		if @user.nil?
 			flash.now[:errors] = ['Incorrect email and/or password']
-			render :new
+			render :new, status: :unprocessable_entity
 		else 
 			login_user!(@user)
 			redirect_to user_url(@user)

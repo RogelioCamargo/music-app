@@ -7,7 +7,7 @@ class BandsController < ApplicationController
 			redirect_to band_url(@band)
 		else 
 			flash.now[:errors] = @band.errors.full_messages
-			render :new
+			render :new, status: :unprocessable_entity
 		end
 	end
 
@@ -43,7 +43,7 @@ class BandsController < ApplicationController
 			redirect_to band_url(@band)
 		else 
 			flash.now[:errors] = @band.errors.full_messages
-			render :edit
+			render :edit, status: :unprocessable_entity
 		end
 	end
 
