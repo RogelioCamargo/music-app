@@ -76,4 +76,5 @@ group :test do
 	gem 'launchy'
 	gem 'shoulda-matchers'
 	gem 'rspec-rails'
+	gem 'rails-controller-testing'
 end
